@@ -1,0 +1,274 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #111827;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page {
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(34, 211, 238, 0.18),
+      transparent 35%
+    ),
+    linear-gradient(135deg, #111827, #1f2937);
+  color: white;
+  padding: 24px;
+}
+
+.header {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 18px 22px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  background: rgba(17, 24, 39, 0.72);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.nav {
+  display: flex;
+  gap: 26px;
+  color: #cbd5e1;
+  font-size: 15px;
+}
+
+.nav a:hover {
+  color: #67e8f9;
+}
+
+.header-button {
+  background: linear-gradient(135deg, #22d3ee, #a7f3d0);
+  color: #0f172a;
+  padding: 11px 18px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+.hero {
+  max-width: 1180px;
+  margin: 80px auto 0;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.hero-content {
+  text-align: left;
+}
+
+.tag {
+  color: #67e8f9;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  color: white;
+  font-size: 64px;
+  line-height: 0.95;
+  margin: 0 0 24px;
+  max-width: 820px;
+}
+
+.hero-text {
+  color: #cbd5e1;
+  font-size: 18px;
+  line-height: 1.7;
+  max-width: 620px;
+  margin-bottom: 32px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.primary-button,
+.secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 22px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.primary-button {
+  background: linear-gradient(135deg, #22d3ee, #a7f3d0);
+  color: #0f172a;
+}
+
+.secondary-button {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: white;
+}
+
+.hero-panel {
+  min-height: 320px;
+  padding: 30px;
+  border-radius: 28px;
+  background:
+    linear-gradient(135deg, rgba(34, 211, 238, 0.16), transparent),
+    rgba(15, 23, 42, 0.76);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.28);
+}
+
+.hero-panel p {
+  color: #67e8f9;
+  font-weight: 700;
+  margin: 0 0 18px;
+}
+
+.hero-panel h2 {
+  color: white;
+  font-size: 34px;
+  line-height: 1.1;
+  margin: 0 0 24px;
+}
+
+.hero-panel span {
+  color: #a7f3d0;
+}
+.services {
+  max-width: 1180px;
+  margin: 110px auto 0;
+}
+
+.section-title {
+  margin-bottom: 30px;
+}
+
+.section-title p {
+  color: #67e8f9;
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+
+.section-title h2 {
+  color: white;
+  font-size: 42px;
+  margin: 0;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.service-card {
+  min-height: 260px;
+  padding: 28px;
+  border-radius: 24px;
+  background: rgba(15, 23, 42, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.service-card span {
+  display: inline-flex;
+  margin-bottom: 34px;
+  color: #67e8f9;
+  font-weight: 800;
+}
+
+.service-card h3 {
+  color: white;
+  font-size: 26px;
+  margin: 0 0 16px;
+}
+
+.service-card p {
+  color: #cbd5e1;
+  line-height: 1.7;
+  margin: 0;
+}
+.process {
+  max-width: 1180px;
+  margin: 110px auto 0;
+  padding-bottom: 80px;
+}
+
+.process-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.process-item {
+  padding: 24px;
+  border-radius: 22px;
+  background: rgba(34, 211, 238, 0.08);
+  border: 1px solid rgba(103, 232, 249, 0.18);
+}
+
+.process-item span {
+  display: inline-flex;
+  color: #a7f3d0;
+  font-weight: 800;
+  margin-bottom: 34px;
+}
+
+.process-item h3 {
+  color: white;
+  font-size: 22px;
+  margin: 0 0 12px;
+}
+
+.process-item p {
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin: 0;
+}
+.footer {
+  max-width: 1180px;
+  margin: 30px auto 0;
+  padding: 34px 0 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.footer h2 {
+  color: white;
+  margin: 0 0 8px;
+}
+
+.footer p {
+  color: #94a3b8;
+  margin: 0;
+}
+
+.footer-links {
+  display: flex;
+  gap: 18px;
+  color: #cbd5e1;
+}
+
+.footer-links a:hover {
+  color: #67e8f9;
+}
