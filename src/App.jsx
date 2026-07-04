@@ -15,10 +15,11 @@ function App() {
         </a>
 
         <nav className="nav">
-          <a href="#">Inicio</a>
-          <a href="#">Servicios</a>
-          <a href="#">Proceso</a>
-          <a href="#">Contacto</a>
+          <a href="#inicio">Inicio</a>
+          <a href="#servicios">Servicios</a>
+          <a href="#productos">Productos</a>
+          <a href="#proceso">Proceso</a>
+          <a href="#contacto">Contacto</a>
         </nav>
 
         <a className="header-button" href="#">
@@ -26,7 +27,7 @@ function App() {
         </a>
       </header>
 
-      <section className="hero">
+      <section className="hero" id="inicio">
         <div className="hero-content">
           <p className="tag">Innovación y soporte técnico</p>
 
@@ -56,7 +57,7 @@ function App() {
         </div>
       </section>
 
-      <section className="services">
+      <section className="services" id="servicios">
         <div className="section-title">
           <p>Servicios</p>
           <h2>Áreas principales de soporte</h2>
@@ -92,7 +93,7 @@ function App() {
         </div>
       </section>
 
-      <section className="process">
+      <section className="process" id="proceso">
         <div className="section-title">
           <p>Proceso</p>
           <h2>Cómo trabajamos cada servicio</h2>
@@ -129,7 +130,7 @@ function App() {
         </div>
       </section>
 
-      <footer className="footer">
+      <footer className="footer" id="contacto">
         <div>
           <h2>TecnoFix</h2>
           <p>Soporte técnico confiable para equipos, sistemas y seguridad.</p>
