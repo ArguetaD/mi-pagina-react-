@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
@@ -6,6 +6,31 @@ function App() {
   const isProductsPage = page === "productos";
 
   const [activeCategory, setActiveCategory] = useState("todos");
+
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  const heroSlides = [
+    "/hero-carousel/slide-1.jpg",
+    "/hero-carousel/slide-2.jpg",
+    "/hero-carousel/slide-3.jpg",
+    "/hero-carousel/slide-4.jpg",
+    "/hero-carousel/slide-5.jpg",
+    "/hero-carousel/slide-6.jpg",
+    "/hero-carousel/slide-7.jpg",
+    "/hero-carousel/slide-8.jpg",
+    "/hero-carousel/slide-9.jpg",
+    "/hero-carousel/slide-10.jpg",
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveSlide((currentSlide) =>
+        currentSlide === heroSlides.length - 1 ? 0 : currentSlide + 1,
+      );
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [heroSlides.length]);
 
   const categories = [
     { id: "todos", label: "Todos" },
@@ -183,10 +208,13 @@ function App() {
               </div>
             </div>
 
-            <div className="hero-panel">
-              <p>Diagnóstico</p>
-              <h2>Computadoras, sistemas y cámaras</h2>
-              <span>Estado: disponible</span>
+            <div className="hero-panel hero-panel-carousel">
+              <div className="hero-carousel">
+                <img
+                  src={heroSlides[activeSlide]}
+                  alt="Trabajo técnico destacado"
+                />
+              </div>
             </div>
           </section>
 
