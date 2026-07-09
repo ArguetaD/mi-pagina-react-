@@ -66,7 +66,10 @@ function App() {
   const [page, setPage] = useState("inicio");
   const [activeCategory, setActiveCategory] = useState("todos");
   const [activeSlide, setActiveSlide] = useState(0);
+  const [selectedProductId, setSelectedProductId] = useState(null);
   const isProductsPage = page === "productos";
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -78,11 +81,20 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
-  const filteredProducts =
-    activeCategory === "todos"
+  const filteredProducts = selectedProductId
+    ? products.filter((product) => product.id === selectedProductId)
+    : activeCategory === "todos"
       ? products
       : products.filter((product) => product.category === activeCategory);
 
+  const searchResults = searchTerm.trim()
+    ? products.filter((product) => {
+        const text =
+          `${product.name} ${product.tag} ${product.description}`.toLowerCase();
+
+        return text.includes(searchTerm.toLowerCase());
+      })
+    : [];
   return (
     <main className="page">
       <div className="background-media" aria-hidden="true">
@@ -119,6 +131,48 @@ function App() {
         </a>
       </header>
 
+      {isSearchOpen && (
+        <div className="search-overlay">
+          <div className="search-panel">
+            <input
+              type="text"
+              placeholder="Buscar producto..."
+              value={searchTerm}
+              onChange={(event) => setSearchTerm(event.target.value)}
+              autoFocus
+            />
+
+            <button
+              className="search-close"
+              onClick={() => {
+                setIsSearchOpen(false);
+                setSearchTerm("");
+              }}
+            >
+              Cerrar
+            </button>
+
+            <div className="search-results">
+              {searchResults.map((product) => (
+                <button
+                  className="search-result"
+                  key={product.id}
+                  onClick={() => {
+                    setSelectedProductId(product.id);
+                    setActiveCategory("todos");
+                    setIsSearchOpen(false);
+                    setSearchTerm("");
+                  }}
+                >
+                  <strong>{product.name}</strong>
+                  <span>{product.tag}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
       {isProductsPage ? (
         <section className="products-page">
           <div className="section-title products-title">
@@ -133,11 +187,34 @@ function App() {
                   activeCategory === category.id ? "active" : ""
                 }`}
                 key={category.id}
-                onClick={() => setActiveCategory(category.id)}
+                onClick={() => {
+                  setActiveCategory(category.id);
+                  setSelectedProductId(null);
+                }}
               >
                 {category.label}
               </button>
             ))}
+
+            <button
+              className="product-search-trigger"
+              aria-label="Buscar productos"
+              onClick={() => setIsSearchOpen(true)}
+            >
+              <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                className="search-icon"
+              >
+                <path
+                  d="M10.8 18.1a7.3 7.3 0 1 1 0-14.6 7.3 7.3 0 0 1 0 14.6Zm5.2-1.7 4.5 4.5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeWidth="2.4"
+                />
+              </svg>
+            </button>
           </div>
 
           <p className="products-count">{filteredProducts.length} productos</p>
