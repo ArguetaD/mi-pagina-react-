@@ -67,6 +67,8 @@ function App() {
   const [activeCategory, setActiveCategory] = useState("todos");
   const [activeSlide, setActiveSlide] = useState(0);
   const [selectedProductId, setSelectedProductId] = useState(null);
+  const [isHeaderFixed, setIsHeaderFixed] = useState(false);
+
   const isProductsPage = page === "productos";
   const isContactPage = page === "contacto";
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -81,6 +83,72 @@ function App() {
 
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsHeaderFixed(window.scrollY > 80);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const revealElements = document.querySelectorAll(
+      ".reveal-left, .reveal-right, .reveal-bottom",
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle("is-visible", entry.isIntersecting);
+        });
+      },
+      { threshold: 0.3 },
+    );
+
+    revealElements.forEach((element) => observer.observe(element));
+
+    return () => observer.disconnect();
+  }, [page]);
+
+  const scrollToPageTop = () => {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+  };
+
+  const navigateToPage = (nextPage) => {
+    setPage(nextPage);
+    setSelectedProductId(null);
+    setIsSearchOpen(false);
+    setSearchTerm("");
+    scrollToPageTop();
+  };
+
+  const navigateToHomeSection = (sectionId) => {
+    setPage("inicio");
+    setSelectedProductId(null);
+    setIsSearchOpen(false);
+    setSearchTerm("");
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        if (sectionId === "inicio") {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          return;
+        }
+
+        document
+          .getElementById(sectionId)
+          ?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+  };
 
   const filteredProducts = selectedProductId
     ? products.filter((product) => product.id === selectedProductId)
@@ -104,25 +172,43 @@ function App() {
         </video>
       </div>
 
-      <header className="header">
-        <button className="logo logo-button" onClick={() => setPage("inicio")}>
+      <header className={`header ${isHeaderFixed ? "header-fixed" : ""}`}>
+        <button
+          className="logo logo-button"
+          onClick={() => navigateToHomeSection("inicio")}
+        >
           TecnoFix
         </button>
 
         <nav className="nav">
-          <a href="#inicio" onClick={() => setPage("inicio")}>
+          <button
+            className="nav-link"
+            onClick={() => navigateToHomeSection("inicio")}
+          >
             Inicio
-          </a>
-          <a href="#servicios" onClick={() => setPage("inicio")}>
+          </button>
+          <button
+            className="nav-link"
+            onClick={() => navigateToHomeSection("servicios")}
+          >
             Servicios
-          </a>
-          <button className="nav-link" onClick={() => setPage("productos")}>
+          </button>
+          <button
+            className="nav-link"
+            onClick={() => navigateToPage("productos")}
+          >
             Productos
           </button>
-          <a href="#proceso" onClick={() => setPage("inicio")}>
+          <button
+            className="nav-link"
+            onClick={() => navigateToHomeSection("proceso")}
+          >
             Proceso
-          </a>
-          <button className="nav-link" onClick={() => setPage("contacto")}>
+          </button>
+          <button
+            className="nav-link"
+            onClick={() => navigateToPage("contacto")}
+          >
             Contacto
           </button>
         </nav>
@@ -292,7 +378,7 @@ function App() {
       ) : (
         <>
           <section className="hero" id="inicio">
-            <div className="hero-content">
+            <div className="hero-content reveal-left">
               <p className="tag">Innovación y soporte técnico</p>
 
               <h1>
@@ -316,7 +402,7 @@ function App() {
               </div>
             </div>
 
-            <div className="hero-panel hero-panel-carousel">
+            <div className="hero-panel hero-panel-carousel reveal-right">
               <div className="hero-carousel">
                 <img
                   src={heroSlides[activeSlide]}
@@ -362,7 +448,7 @@ function App() {
             </div>
           </section>
 
-          <section className="process" id="proceso">
+          <section className="process reveal-bottom" id="proceso">
             <div className="section-title">
               <p>Proceso</p>
               <h2>Cómo trabajamos cada servicio</h2>
@@ -407,26 +493,41 @@ function App() {
         </>
       )}
 
-      <footer className="footer" id="contacto">
+      <footer className="footer reveal-bottom" id="contacto">
         <div>
           <h2>TecnoFix</h2>
           <p>Soporte técnico confiable para equipos, sistemas y seguridad.</p>
         </div>
 
         <div className="footer-links">
-          <button className="footer-link" onClick={() => setPage("inicio")}>
+          <button
+            className="footer-link"
+            onClick={() => navigateToHomeSection("inicio")}
+          >
             Inicio
           </button>
-          <button className="footer-link" onClick={() => setPage("inicio")}>
+          <button
+            className="footer-link"
+            onClick={() => navigateToHomeSection("servicios")}
+          >
             Servicios
           </button>
-          <button className="footer-link" onClick={() => setPage("productos")}>
+          <button
+            className="footer-link"
+            onClick={() => navigateToPage("productos")}
+          >
             Productos
           </button>
-          <button className="footer-link" onClick={() => setPage("inicio")}>
+          <button
+            className="footer-link"
+            onClick={() => navigateToHomeSection("proceso")}
+          >
             Proceso
           </button>
-          <button className="footer-link" onClick={() => setPage("inicio")}>
+          <button
+            className="footer-link"
+            onClick={() => navigateToPage("contacto")}
+          >
             Contacto
           </button>
         </div>
