@@ -70,6 +70,7 @@ function App() {
   const [isHeaderFixed, setIsHeaderFixed] = useState(false);
 
   const isProductsPage = page === "productos";
+  const isTechnicalServicesPage = page === "servicios-tecnicos";
   const isContactPage = page === "contacto";
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -165,7 +166,11 @@ function App() {
       })
     : [];
   return (
-    <main className="page">
+    <main
+      className={`page ${
+        isTechnicalServicesPage || isContactPage ? "page-full-width" : ""
+      }`}
+    >
       <div className="background-media" aria-hidden="true">
         <video autoPlay loop muted playsInline>
           <source src="/background-video.mp4" type="video/mp4" />
@@ -187,12 +192,30 @@ function App() {
           >
             Inicio
           </button>
-          <button
-            className="nav-link"
-            onClick={() => navigateToHomeSection("servicios")}
-          >
-            Servicios
-          </button>
+          <div className="services-menu">
+            <button
+              className="nav-link services-trigger"
+              onClick={() => navigateToHomeSection("servicios")}
+            >
+              Nuestros Servicios
+              <span className="services-symbol" aria-hidden="true"></span>
+            </button>
+
+            <div className="services-dropdown">
+              <button onClick={() => navigateToPage("servicios-tecnicos")}>
+                Servicios técnicos
+              </button>
+              <button onClick={() => navigateToHomeSection("servicios")}>
+                Planes de sitio web
+              </button>
+              <button onClick={() => navigateToHomeSection("servicios")}>
+                Cámaras de seguridad
+              </button>
+              <button onClick={() => navigateToHomeSection("servicios")}>
+                Diseños
+              </button>
+            </div>
+          </div>
           <button
             className="nav-link"
             onClick={() => navigateToPage("productos")}
@@ -345,10 +368,23 @@ function App() {
             ))}
           </div>
         </section>
+      ) : isTechnicalServicesPage ? (
+        <section className="technical-services-page">
+          <div className="technical-services-hero" aria-label="Servicios técnicos"></div>
+
+          <div className="technical-services-content reveal-bottom">
+            <p className="technical-services-tag">Servicios técnicos</p>
+            <h1>Soporte técnico para tus equipos</h1>
+            <p>
+              Diagnóstico, mantenimiento, reparación y optimización para que tus
+              equipos trabajen de forma estable, rápida y segura.
+            </p>
+          </div>
+        </section>
       ) : isContactPage ? (
         <section className="contact-page">
           <div className="contact-hero-band">
-            <div className="contact-intro-card">
+            <div className="contact-intro-card reveal-bottom">
               <h1>Contáctenos</h1>
               <div className="contact-divider"></div>
               <p>Estamos para ayudarte</p>
@@ -356,19 +392,19 @@ function App() {
           </div>
 
           <div className="contact-cards">
-            <article className="contact-card">
+            <article className="contact-card reveal-bottom">
               <span className="contact-icon">☎</span>
               <h3>Llámanos</h3>
               <p>(502) 5555-5555</p>
             </article>
 
-            <article className="contact-card">
+            <article className="contact-card reveal-bottom">
               <span className="contact-icon">✉</span>
               <h3>Escríbenos</h3>
               <p>contacto@tecnofix.com</p>
             </article>
 
-            <article className="contact-card">
+            <article className="contact-card reveal-bottom">
               <span className="contact-icon">⌖</span>
               <h3>Visítanos</h3>
               <p>Ciudad de Quetzaltenango, La Cruz</p>
