@@ -83,7 +83,7 @@ function ServiciosTecnicos() {
         <article className="technical-service-row">
           <div className="technical-service-image reveal-left">
             <img
-              src="/services/identidad-visual.jpg "
+              src="/services/identidad-visual.jpg"
               alt="Nombre del servicio"
             />
           </div>
