@@ -73,7 +73,27 @@ function ServiciosTecnicos() {
           </div>
 
           <div className="technical-service-image reveal-right">
-            <img src="/services/sitios-web.webp" alt="Sitios web todo incluido" />
+            <img
+              src="/services/sitios-web.webp"
+              alt="Sitios web todo incluido"
+            />
+          </div>
+        </article>
+
+        <article className="technical-service-row">
+          <div className="technical-service-image reveal-left">
+            <img
+              src="/services/identidad-visual.jpg "
+              alt="Nombre del servicio"
+            />
+          </div>
+
+          <div className="technical-service-text reveal-right">
+            <h2>Identidad Visual</h2>
+            <p>
+              Diseñamos logotipos únicos y profesionales, adaptados a la
+              personalidad, valores y objetivos de cada marca.
+            </p>
           </div>
         </article>
       </div>

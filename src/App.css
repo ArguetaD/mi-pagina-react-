@@ -182,15 +182,13 @@ a {
 
 .nav a:hover,
 .nav-link:hover,
-.services-menu:hover .services-trigger,
-.services-menu:focus-within .services-trigger {
+.services-menu.is-open .services-trigger {
   background: linear-gradient(135deg, #22d3ee, #a7f3d0);
   color: #0f172a;
   transform: translateY(-1px);
 }
 
-.services-menu:hover .services-symbol::before,
-.services-menu:focus-within .services-symbol::before {
+.services-menu.is-open .services-symbol::before {
   content: "-";
 }
 
@@ -215,8 +213,7 @@ a {
   backdrop-filter: blur(18px);
 }
 
-.services-menu:hover .services-dropdown,
-.services-menu:focus-within .services-dropdown {
+.services-menu.is-open .services-dropdown {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
@@ -1063,6 +1060,17 @@ a {
       rgba(5, 12, 24, 0.9) 100%
     ),
     url("/services/servicios-tecnicos.jpg") center/cover fixed no-repeat;
+}
+
+.web-plans-hero {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(5, 12, 24, 0.18) 0%,
+      rgba(5, 12, 24, 0.4) 48%,
+      rgba(5, 12, 24, 0.9) 100%
+    ),
+    url("/services/planes-sitios-web.png") center/cover fixed no-repeat;
 }
 
 .technical-services-hero::after {

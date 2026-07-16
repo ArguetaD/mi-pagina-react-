@@ -8,6 +8,7 @@ import { categories, heroSlides, products } from "./data/siteData";
 import Contacto from "./pages/Contacto";
 import Home from "./pages/Home";
 import Productos from "./pages/Productos";
+import PlanesSitiosWeb from "./pages/servicios/PlanesSitiosWeb";
 import ServiciosTecnicos from "./pages/servicios/ServiciosTecnicos";
 
 function App() {
@@ -21,8 +22,10 @@ function App() {
 
   const isProductsPage = page === "productos";
   const isTechnicalServicesPage = page === "servicios-tecnicos";
+  const isWebPlansPage = page === "planes-sitios-web";
   const isContactPage = page === "contacto";
-  const isFullWidthPage = isTechnicalServicesPage || isContactPage;
+  const isFullWidthPage =
+    isTechnicalServicesPage || isWebPlansPage || isContactPage;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -143,6 +146,10 @@ function App() {
 
     if (isTechnicalServicesPage) {
       return <ServiciosTecnicos />;
+    }
+
+    if (isWebPlansPage) {
+      return <PlanesSitiosWeb />;
     }
 
     if (isContactPage) {

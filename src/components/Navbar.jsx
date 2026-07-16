@@ -1,9 +1,28 @@
+import { useState } from "react";
+
 function Navbar({ isHeaderFixed, navigateToHomeSection, navigateToPage }) {
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+
+  const closeServicesMenu = () => {
+    setIsServicesOpen(false);
+    document.activeElement?.blur?.();
+  };
+
+  const handleHomeSectionClick = (sectionId) => {
+    closeServicesMenu();
+    navigateToHomeSection(sectionId);
+  };
+
+  const handlePageClick = (nextPage) => {
+    closeServicesMenu();
+    navigateToPage(nextPage);
+  };
+
   return (
     <header className={`header ${isHeaderFixed ? "header-fixed" : ""}`}>
       <button
         className="logo logo-button"
-        onClick={() => navigateToHomeSection("inicio")}
+        onClick={() => handleHomeSectionClick("inicio")}
       >
         TecnoFix
       </button>
@@ -11,46 +30,56 @@ function Navbar({ isHeaderFixed, navigateToHomeSection, navigateToPage }) {
       <nav className="nav">
         <button
           className="nav-link"
-          onClick={() => navigateToHomeSection("inicio")}
+          onClick={() => handleHomeSectionClick("inicio")}
         >
           Inicio
         </button>
 
-        <div className="services-menu">
+        <div
+          className={`services-menu ${isServicesOpen ? "is-open" : ""}`}
+          onMouseEnter={() => setIsServicesOpen(true)}
+          onMouseLeave={() => setIsServicesOpen(false)}
+          onFocus={() => setIsServicesOpen(true)}
+          onBlur={(event) => {
+            if (!event.currentTarget.contains(event.relatedTarget)) {
+              setIsServicesOpen(false);
+            }
+          }}
+        >
           <button
             className="nav-link services-trigger"
-            onClick={() => navigateToHomeSection("servicios")}
+            onClick={() => handleHomeSectionClick("servicios")}
           >
             Nuestros Servicios
             <span className="services-symbol" aria-hidden="true"></span>
           </button>
 
           <div className="services-dropdown">
-            <button onClick={() => navigateToPage("servicios-tecnicos")}>
+            <button onClick={() => handlePageClick("servicios-tecnicos")}>
               Servicios técnicos
             </button>
-            <button onClick={() => navigateToHomeSection("servicios")}>
+            <button onClick={() => handlePageClick("planes-sitios-web")}>
               Planes de sitio web
             </button>
-            <button onClick={() => navigateToHomeSection("servicios")}>
+            <button onClick={() => handleHomeSectionClick("servicios")}>
               Cámaras de seguridad
             </button>
-            <button onClick={() => navigateToHomeSection("servicios")}>
+            <button onClick={() => handleHomeSectionClick("servicios")}>
               Diseños
             </button>
           </div>
         </div>
 
-        <button className="nav-link" onClick={() => navigateToPage("productos")}>
+        <button className="nav-link" onClick={() => handlePageClick("productos")}>
           Productos
         </button>
         <button
           className="nav-link"
-          onClick={() => navigateToHomeSection("proceso")}
+          onClick={() => handleHomeSectionClick("proceso")}
         >
           Proceso
         </button>
-        <button className="nav-link" onClick={() => navigateToPage("contacto")}>
+        <button className="nav-link" onClick={() => handlePageClick("contacto")}>
           Contacto
         </button>
       </nav>
