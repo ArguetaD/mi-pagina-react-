@@ -9,8 +9,10 @@ function PlanesSitiosWeb() {
           <p className="technical-services-tag">Planes de sitios web</p>
           <h1>Desarrollo Web Profesional</h1>
           <p>
-            Creamos sitios web modernos y personalizados adaptados a tus
-            necesidades
+            Creamos sitios web modernos y personalizados para negocios y
+            proyectos personales. Nuestro diseño se adapta a tus necesidades,
+            ofreciendo una imagen profesional, atractiva y funcional para que
+            destaques en Internet.
           </p>
         </div>
       </div>
@@ -18,32 +20,70 @@ function PlanesSitiosWeb() {
       <div className="technical-services-detail">
         <article className="technical-service-row">
           <div className="technical-service-image reveal-left">
-            <img src="/services/asesoria-tecnica.jpg" alt="Asesoría técnica" />
+            <img
+              src="/services/dominio_02.webp"
+              alt="Dominio para sitio web"
+            />
           </div>
 
           <div className="technical-service-text reveal-right">
-            <h2>Asesoría Técnica</h2>
+            <h2>Dominio para tu sitio web</h2>
             <p>
-              Te apoyamos en la elección del equipo ideal según tus necesidades,
-              presupuesto y tipo de trabajo.
+              El dominio es la identidad digital de tu empresa y la dirección
+              oficial de tu sitio web. Te ayudamos a elegir un nombre
+              personalizado y profesional, por ejemplo: www.tuempresa.com.
             </p>
           </div>
         </article>
 
         <article className="technical-service-row reverse">
           <div className="technical-service-text reveal-left">
-            <h2>Ecosistema Windows</h2>
+            <h2>Hosting para tu web</h2>
             <p>
-              Formateo, instalación de programas, cambio de disco duro, memoria
-              RAM, respaldo de información, antivirus y optimización del
-              sistema.
+              El hosting es el servicio que mantiene tu página web y tus correos
+              electrónicos siempre disponibles, rápidos y seguros para tus
+              visitantes.
+            </p>
+          </div>
+
+          <div className="technical-service-image reveal-right">
+            <img src="/services/hosting_02.jpg" alt="Hosting para tu web" />
+          </div>
+        </article>
+
+        <article className="technical-service-row">
+          <div className="technical-service-image reveal-left">
+            <img
+              src="/services/UnaPagina_02.jpg"
+              alt="Sitio web de una sola página"
+            />
+          </div>
+
+          <div className="technical-service-text reveal-right">
+            <h2>Sitio web de una sola página</h2>
+            <p>
+              Toda la información de tu negocio o proyecto se organiza en una
+              sola página. Es ideal para presentar servicios, contacto y datos
+              principales de forma clara y directa.
+            </p>
+          </div>
+        </article>
+
+        <article className="technical-service-row reverse">
+          <div className="technical-service-text reveal-left">
+            <h2>Sitios web con varias páginas</h2>
+            <p>
+              Desarrollamos una página principal conectada con secciones
+              independientes para productos, servicios, contacto y más. Es ideal
+              para negocios que necesitan mostrar más información de forma
+              ordenada.
             </p>
           </div>
 
           <div className="technical-service-image reveal-right">
             <img
-              src="/services/ecosistema-windows.jpeg"
-              alt="Ecosistema Windows"
+              src="/services/Paginas_02.png"
+              alt="Sitio web con varias páginas"
             />
           </div>
         </article>
@@ -51,51 +91,16 @@ function PlanesSitiosWeb() {
         <article className="technical-service-row">
           <div className="technical-service-image reveal-left">
             <img
-              src="/services/camaras-seguridad.jpg"
-              alt="Instalación de cámaras de seguridad"
+              src="/services/Integracion_02.png"
+              alt="Integración de redes sociales"
             />
           </div>
 
           <div className="technical-service-text reveal-right">
-            <h2>Instalación y configuración de cámaras de seguridad</h2>
+            <h2>Integración de redes sociales</h2>
             <p>
-              Instalación y configuración de circuito cerrado de seguridad,
-              cámaras IP, DVR, grabación remota en ecosistemas DAHUA y
-              HIKVISION.
-            </p>
-          </div>
-        </article>
-
-        <article className="technical-service-row reverse">
-          <div className="technical-service-text reveal-left">
-            <h2>Sitios Web todo incluido</h2>
-            <p>
-              Sitio web todo incluido, dominio, correos corporativos, hosting y
-              soluciones para pequeña empresa y emprendedores.
-            </p>
-          </div>
-
-          <div className="technical-service-image reveal-right">
-            <img
-              src="/services/sitios-web.webp"
-              alt="Sitios web todo incluido"
-            />
-          </div>
-        </article>
-
-        <article className="technical-service-row">
-          <div className="technical-service-image reveal-left">
-            <img
-              src="/services/identidad-visual.jpg"
-              alt="Nombre del servicio"
-            />
-          </div>
-
-          <div className="technical-service-text reveal-right">
-            <h2>Identidad Visual</h2>
-            <p>
-              Diseñamos logotipos únicos y profesionales, adaptados a la
-              personalidad, valores y objetivos de cada marca.
+              Agregamos botones y enlaces directos a tus redes sociales para que
+              los visitantes puedan encontrarte y comunicarse contigo fácilmente.
             </p>
           </div>
         </article>
