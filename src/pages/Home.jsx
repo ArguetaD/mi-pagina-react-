@@ -34,42 +34,6 @@ function Home({ heroSlides, activeSlide }) {
         </div>
       </section>
 
-      <section className="services" id="servicios">
-        <div className="section-title">
-          <p>Servicios</p>
-          <h2>Áreas principales de soporte</h2>
-        </div>
-
-        <div className="service-grid">
-          <article className="service-card">
-            <span>01</span>
-            <h3>Reparación y mantenimiento</h3>
-            <p>
-              Limpieza, diagnóstico, optimización y reparación de computadoras
-              para mejorar su rendimiento y vida útil.
-            </p>
-          </article>
-
-          <article className="service-card">
-            <span>02</span>
-            <h3>Sistemas</h3>
-            <p>
-              Instalación, configuración y soporte para sistemas operativos,
-              software de trabajo y herramientas empresariales.
-            </p>
-          </article>
-
-          <article className="service-card">
-            <span>03</span>
-            <h3>Instalación de cámaras</h3>
-            <p>
-              Diseño e instalación de cámaras de seguridad para hogares,
-              negocios y espacios que necesitan monitoreo confiable.
-            </p>
-          </article>
-        </div>
-      </section>
-
       <section className="process reveal-bottom" id="proceso">
         <div className="section-title">
           <p>Proceso</p>
@@ -86,13 +50,17 @@ function Home({ heroSlides, activeSlide }) {
           <div className="process-item">
             <span>02</span>
             <h3>Propuesta</h3>
-            <p>Explicamos la solución, tiempo estimado y costo antes de iniciar.</p>
+            <p>
+              Explicamos la solución, tiempo estimado y costo antes de iniciar.
+            </p>
           </div>
 
           <div className="process-item">
             <span>03</span>
             <h3>Servicio</h3>
-            <p>Ejecutamos el trabajo con orden, cuidado y atención al detalle.</p>
+            <p>
+              Ejecutamos el trabajo con orden, cuidado y atención al detalle.
+            </p>
           </div>
 
           <div className="process-item">

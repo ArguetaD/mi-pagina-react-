@@ -1,0 +1,165 @@
+﻿.header {
+  position: relative;
+  z-index: 100;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 18px 22px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  background: rgba(8, 17, 31, 0.78);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  backdrop-filter: blur(18px);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+}
+
+.header-fixed {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  width: min(1180px, calc(100% - 48px));
+  z-index: 100;
+  margin: 0;
+  transform: translateX(-50%);
+  background: rgba(8, 17, 31, 0.92);
+  animation: headerFadeDown 0.35s ease both;
+}
+
+@keyframes headerFadeDown {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.logo-button {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
+}
+
+.nav {
+  display: flex;
+  gap: 26px;
+  color: #d7e1ef;
+  font-size: 15px;
+}
+
+.services-menu {
+  position: relative;
+  padding-bottom: 14px;
+  margin-bottom: -14px;
+}
+
+.nav a,
+.nav-link {
+  padding: 10px 14px;
+  border-radius: 999px;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.nav-link {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.services-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.services-symbol::before {
+  content: "+";
+  font-weight: 900;
+}
+
+.nav a:hover,
+.nav-link:hover,
+.services-menu.is-open .services-trigger {
+  background: linear-gradient(135deg, #22d3ee, #a7f3d0);
+  color: #0f172a;
+  transform: translateY(-1px);
+}
+
+.services-menu.is-open .services-symbol::before {
+  content: "-";
+}
+
+.services-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 120;
+  width: 230px;
+  padding: 8px;
+  border: 1px solid rgba(103, 232, 249, 0.2);
+  border-radius: 16px;
+  background: rgba(8, 17, 31, 0.96);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition:
+    opacity 0.22s ease,
+    transform 0.22s ease,
+    visibility 0.22s ease;
+  backdrop-filter: blur(18px);
+}
+
+.services-menu.is-open .services-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.services-dropdown button {
+  width: 100%;
+  padding: 12px 14px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: #d7e1ef;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.services-dropdown button:hover,
+.services-dropdown button:focus-visible {
+  background: rgba(103, 232, 249, 0.12);
+  color: #67e8f9;
+  outline: none;
+}
+
+.header-button {
+  background: linear-gradient(135deg, #22d3ee, #a7f3d0);
+  color: #0f172a;
+  padding: 11px 18px;
+  border-radius: 999px;
+  font-weight: 700;
+}

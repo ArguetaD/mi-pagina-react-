@@ -1,0 +1,65 @@
+﻿@media (max-width: 860px) {
+  .page {
+    padding: 18px;
+  }
+
+  .header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    margin-top: 56px;
+  }
+
+  .hero h1 {
+    font-size: 46px;
+  }
+
+  .products-title h1 {
+    font-size: 44px;
+  }
+
+  .service-grid,
+  .process-list,
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer {
+    width: calc(100% + 36px);
+    margin-left: -18px;
+    margin-right: -18px;
+    margin-bottom: -24px;
+    grid-template-columns: 1fr;
+    gap: 34px;
+    padding: 52px 24px;
+  }
+
+  .page-full-width .footer {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .footer h2,
+  .footer h3 {
+    font-size: 20px;
+  }
+
+  .footer p,
+  .footer strong,
+  .footer-link {
+    font-size: 16px;
+  }
+
+  .footer strong {
+    font-size: 21px;
+  }
+}
