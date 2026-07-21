@@ -34,6 +34,25 @@ function Home({ heroSlides, activeSlide }) {
         </div>
       </section>
 
+      <section className="about-section reveal-bottom" id="quienes-somos">
+        <div className="about-image">
+          <img src="/about/Quienes-somos.jpg" alt="Equipo de TecnoFix" />
+        </div>
+
+        <div className="about-content">
+          <p className="tag">Quiénes somos</p>
+          <h2>TecnoFix</h2>
+          <p>
+            Somos un equipo enfocado en soporte técnico, soluciones informáticas
+            y seguridad para hogares, negocios y emprendedores.
+          </p>
+          <p>
+            Trabajamos con orden, atención al detalle y compromiso para que cada
+            equipo, sistema o instalación funcione de forma estable y segura.
+          </p>
+        </div>
+      </section>
+
       <section className="process reveal-bottom" id="proceso">
         <div className="section-title">
           <p>Proceso</p>

@@ -35,6 +35,13 @@ function Navbar({ isHeaderFixed, navigateToHomeSection, navigateToPage }) {
           Inicio
         </button>
 
+        <button
+          className="nav-link"
+          onClick={() => navigateToHomeSection("quienes-somos")}
+        >
+          Quiénes somos
+        </button>
+
         <div
           className={`services-menu ${isServicesOpen ? "is-open" : ""}`}
           onMouseEnter={() => setIsServicesOpen(true)}
@@ -70,7 +77,10 @@ function Navbar({ isHeaderFixed, navigateToHomeSection, navigateToPage }) {
           </div>
         </div>
 
-        <button className="nav-link" onClick={() => handlePageClick("productos")}>
+        <button
+          className="nav-link"
+          onClick={() => handlePageClick("productos")}
+        >
           Productos
         </button>
         <button
@@ -79,7 +89,10 @@ function Navbar({ isHeaderFixed, navigateToHomeSection, navigateToPage }) {
         >
           Proceso
         </button>
-        <button className="nav-link" onClick={() => handlePageClick("contacto")}>
+        <button
+          className="nav-link"
+          onClick={() => handlePageClick("contacto")}
+        >
           Contacto
         </button>
       </nav>
