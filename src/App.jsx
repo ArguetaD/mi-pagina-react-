@@ -156,7 +156,13 @@ function App() {
       return <Contacto />;
     }
 
-    return <Home heroSlides={heroSlides} activeSlide={activeSlide} />;
+    return (
+      <Home
+        heroSlides={heroSlides}
+        activeSlide={activeSlide}
+        navigateToPage={navigateToPage}
+      />
+    );
   };
 
   return (

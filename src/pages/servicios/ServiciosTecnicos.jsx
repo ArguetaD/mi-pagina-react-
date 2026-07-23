@@ -30,10 +30,17 @@ function ServiciosTecnicos() {
         <article className="technical-service-row reverse">
           <div className="technical-service-text reveal-left">
             <h2>Ecosistema Windows</h2>
-            <p>
-              Formateo, instalación de programas, cambio de disco duro, memoria
-              RAM, respaldo de información, antivirus y optimización del
-              sistema.
+            <p className="windows-list">
+              • Formateo
+              <br />
+              • Instalación de programas
+              <br />
+              • Cambio de disco duro
+              <br />
+              • Cambio de memoria RAM
+              <br />
+              • Respaldo de información antivirus
+              <br />• Optimización del sistema
             </p>
           </div>
 
@@ -54,7 +61,7 @@ function ServiciosTecnicos() {
           </div>
 
           <div className="technical-service-text reveal-right">
-            <h2>Instalación y configuración de cámaras de seguridad</h2>
+            <h2>Instalación de cámaras de seguridad</h2>
             <p>
               Instalación y configuración de circuito cerrado de seguridad,
               cámaras IP, DVR, grabación remota en ecosistemas DAHUA y
@@ -67,8 +74,8 @@ function ServiciosTecnicos() {
           <div className="technical-service-text reveal-left">
             <h2>Sitios Web todo incluido</h2>
             <p>
-              Sitio web todo incluido, dominio, correos corporativos, hosting y
-              soluciones para pequeña empresa y emprendedores.
+              Sitio web todo incluido, dominio, hosting y soluciones para
+              pequeña empresa y emprendedores.
             </p>
           </div>
 

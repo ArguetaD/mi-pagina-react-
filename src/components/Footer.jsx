@@ -63,8 +63,6 @@ function Footer({ navigateToHomeSection, navigateToPage }) {
 
         <h3>Cuenta Bancaria</h3>
         <p>Banco: Lorem ipsum</p>
-        <p>A nombre de: TecnoFix</p>
-        <p>Cuenta No.: 000000000</p>
       </div>
     </footer>
   );

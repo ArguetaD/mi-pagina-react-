@@ -1,4 +1,4 @@
-function Home({ heroSlides, activeSlide }) {
+function Home({ heroSlides, activeSlide, navigateToPage }) {
   return (
     <>
       <section className="hero" id="inicio">
@@ -17,10 +17,13 @@ function Home({ heroSlides, activeSlide }) {
             <a className="primary-button" href="#">
               Solicitar servicio
             </a>
-
-            <a className="secondary-button" href="#">
+            <button
+              className="secondary-button"
+              type="button"
+              onClick={() => navigateToPage("servicios-tecnicos")}
+            >
               Ver servicios
-            </a>
+            </button>{" "}
           </div>
         </div>
 

@@ -1,8 +1,8 @@
 ﻿.footer {
   width: calc(100% + 48px);
   margin: 90px -24px -30px;
-  padding: 70px clamp(24px, 6vw, 110px);
-  background: linear-gradient(180deg, #121212 0 24px, #202020 24px 100%);
+  padding: clamp(24px, 6vw, 110px) 40px;
+  background: #202020;
   display: grid;
   grid-template-columns: 1.2fr 1.1fr 0.9fr 1.3fr;
   gap: 48px;
@@ -20,6 +20,7 @@
   display: flex;
   flex-direction: column;
   gap: 18px;
+  transform: translateY(10px);
 }
 
 .footer h2,
