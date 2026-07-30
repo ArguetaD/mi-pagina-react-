@@ -1,6 +1,11 @@
 ﻿html {
   scroll-behavior: smooth;
 }
+:root {
+  --content-max-width: 1400px;
+  --page-gutter: clamp(18px, 3vw, 48px);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -21,11 +26,12 @@ a {
   isolation: isolate;
   min-height: 100vh;
   color: white;
-  padding: 24px;
+  padding: var(--page-gutter);
   overflow: hidden;
 }
 
 .page-full-width {
+  padding-top: 0;
   padding-left: 0;
   padding-right: 0;
 }
@@ -34,7 +40,10 @@ a {
   position: absolute;
   top: 24px;
   left: 50%;
-  width: min(1180px, calc(100% - 48px));
+  width: min(
+    var(--content-max-width),
+    calc(100% - (2 * var(--page-gutter)))
+  );
   transform: translateX(-50%);
 }
 

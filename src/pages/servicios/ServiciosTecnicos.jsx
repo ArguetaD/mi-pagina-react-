@@ -15,7 +15,7 @@ function ServiciosTecnicos() {
       <div className="technical-services-detail">
         <article className="technical-service-row">
           <div className="technical-service-image reveal-left">
-            <img src="/services/asesoria-tecnica.jpg" alt="Asesoría técnica" />
+            <img src="/services/asesoria-tecnica_01.png" alt="Asesoría técnica" />
           </div>
 
           <div className="technical-service-text reveal-right">
@@ -46,7 +46,7 @@ function ServiciosTecnicos() {
 
           <div className="technical-service-image reveal-right">
             <img
-              src="/services/ecosistema-windows.jpeg"
+              src="/services/ecosistema-windows_01.jpeg"
               alt="Ecosistema Windows"
             />
           </div>
@@ -55,7 +55,7 @@ function ServiciosTecnicos() {
         <article className="technical-service-row">
           <div className="technical-service-image reveal-left">
             <img
-              src="/services/camaras-seguridad.jpg"
+              src="/services/camaras-seguridad_01.jpg"
               alt="Instalación de cámaras de seguridad"
             />
           </div>
@@ -81,7 +81,7 @@ function ServiciosTecnicos() {
 
           <div className="technical-service-image reveal-right">
             <img
-              src="/services/sitios-web.webp"
+              src="/services/sitios-web_01.webp"
               alt="Sitios web todo incluido"
             />
           </div>
@@ -90,7 +90,7 @@ function ServiciosTecnicos() {
         <article className="technical-service-row">
           <div className="technical-service-image reveal-left">
             <img
-              src="/services/identidad-visual.jpg"
+              src="/services/identidad-visual_01.jpg"
               alt="Nombre del servicio"
             />
           </div>

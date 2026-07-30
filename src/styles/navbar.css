@@ -1,7 +1,7 @@
 ﻿.header {
   position: relative;
   z-index: 100;
-  max-width: 1180px;
+  max-width: var(--content-max-width);
   margin: 0 auto;
   padding: 18px 22px;
   border: 1px solid rgba(255, 255, 255, 0.14);
@@ -19,7 +19,10 @@
   position: fixed;
   top: 0;
   left: 50%;
-  width: min(1180px, calc(100% - 48px));
+  width: min(
+    var(--content-max-width),
+    calc(100% - (2 * var(--page-gutter)))
+  );
   z-index: 100;
   margin: 0;
   transform: translateX(-50%);

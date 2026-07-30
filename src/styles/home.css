@@ -1,5 +1,5 @@
 ﻿.hero {
-  max-width: 1180px;
+  max-width: var(--content-max-width);
   margin: 80px auto 0;
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
@@ -155,7 +155,7 @@
 }
 
 .services {
-  max-width: 1180px;
+  max-width: var(--content-max-width);
   margin: 110px auto 0;
   scroll-margin-top: 130px;
 }
@@ -211,7 +211,7 @@
 }
 
 .process {
-  max-width: 1180px;
+  max-width: var(--content-max-width);
   margin: 110px auto 0;
   padding-bottom: 80px;
   scroll-margin-top: 250px;
@@ -251,7 +251,7 @@
 }
 
 .about-section {
-  max-width: 1180px;
+  max-width: var(--content-max-width);
   margin: 110px auto 0;
   scroll-margin-top: 270px;
   display: grid;
