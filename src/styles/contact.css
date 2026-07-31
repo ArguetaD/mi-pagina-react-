@@ -27,7 +27,7 @@
       rgba(5, 12, 24, 0.42) 52%,
       rgba(5, 12, 24, 0.92) 100%
     ),
-    url("/contact/contact-hero.jpg") center/cover fixed no-repeat;
+    url("/contact/contact-hero.png") center/cover fixed no-repeat;
 }
 
 .contact-intro-card {

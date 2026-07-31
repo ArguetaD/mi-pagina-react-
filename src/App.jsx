@@ -145,7 +145,7 @@ function App() {
     }
 
     if (isTechnicalServicesPage) {
-      return <ServiciosTecnicos />;
+      return <ServiciosTecnicos navigateToPage={navigateToPage} />;
     }
 
     if (isWebPlansPage) {

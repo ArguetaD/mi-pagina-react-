@@ -66,6 +66,12 @@ function PlanesSitiosWeb() {
               sola página. Es ideal para presentar servicios, contacto y datos
               principales de forma clara y directa.
             </p>
+
+            <div className="technical-service-actions">
+              <button className="service-quote-button" type="button">
+                Cotizar página de una sección
+              </button>
+            </div>
           </div>
         </article>
 
@@ -78,6 +84,12 @@ function PlanesSitiosWeb() {
               para negocios que necesitan mostrar más información de forma
               ordenada.
             </p>
+
+            <div className="technical-service-actions">
+              <button className="service-quote-button" type="button">
+                Cotizar sitio con varias páginas
+              </button>
+            </div>
           </div>
 
           <div className="technical-service-image reveal-right">
@@ -104,6 +116,18 @@ function PlanesSitiosWeb() {
             </p>
           </div>
         </article>
+
+        <section className="web-plans-cta reveal-bottom">
+          <p className="technical-services-tag">Te ayudamos a elegir</p>
+          <h2>¿No sabes qué tipo de página necesitas?</h2>
+          <p>
+            Cuéntanos sobre tu negocio y te recomendaremos la opción que mejor
+            se adapte a tus objetivos.
+          </p>
+          <button className="service-quote-button" type="button">
+            Recibir asesoría
+          </button>
+        </section>
       </div>
     </section>
   );

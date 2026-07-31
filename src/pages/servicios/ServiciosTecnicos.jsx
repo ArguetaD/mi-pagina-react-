@@ -1,4 +1,4 @@
-function ServiciosTecnicos() {
+function ServiciosTecnicos({ navigateToPage }) {
   return (
     <section className="technical-services-page">
       <div className="technical-services-hero" aria-label="Servicios técnicos">
@@ -14,8 +14,19 @@ function ServiciosTecnicos() {
 
       <div className="technical-services-detail">
         <article className="technical-service-row">
-          <div className="technical-service-image reveal-left">
-            <img src="/services/asesoria-tecnica_01.png" alt="Asesoría técnica" />
+          <div className="technical-service-media reveal-left">
+            <div className="technical-service-image">
+              <img
+                src="/services/asesoria-tecnica_01.png"
+                alt="Asesoría técnica"
+              />
+            </div>
+
+            <div className="technical-service-actions">
+              <button className="service-quote-button" type="button">
+                Solicitar asesoría
+              </button>
+            </div>
           </div>
 
           <div className="technical-service-text reveal-right">
@@ -44,20 +55,36 @@ function ServiciosTecnicos() {
             </p>
           </div>
 
-          <div className="technical-service-image reveal-right">
-            <img
-              src="/services/ecosistema-windows_01.jpeg"
-              alt="Ecosistema Windows"
-            />
+          <div className="technical-service-media reveal-right">
+            <div className="technical-service-image">
+              <img
+                src="/services/ecosistema-windows_01.jpeg"
+                alt="Ecosistema Windows"
+              />
+            </div>
+
+            <div className="technical-service-actions">
+              <button className="service-quote-button" type="button">
+                Solicitar soporte
+              </button>
+            </div>
           </div>
         </article>
 
         <article className="technical-service-row">
-          <div className="technical-service-image reveal-left">
-            <img
-              src="/services/camaras-seguridad_01.jpg"
-              alt="Instalación de cámaras de seguridad"
-            />
+          <div className="technical-service-media reveal-left">
+            <div className="technical-service-image">
+              <img
+                src="/services/camaras-seguridad_01.jpg"
+                alt="Instalación de cámaras de seguridad"
+              />
+            </div>
+
+            <div className="technical-service-actions">
+              <button className="service-quote-button" type="button">
+                Cotizar instalación
+              </button>
+            </div>
           </div>
 
           <div className="technical-service-text reveal-right">
@@ -79,20 +106,44 @@ function ServiciosTecnicos() {
             </p>
           </div>
 
-          <div className="technical-service-image reveal-right">
-            <img
-              src="/services/sitios-web_01.webp"
-              alt="Sitios web todo incluido"
-            />
+          <div className="technical-service-media reveal-right">
+            <div className="technical-service-image">
+              <img
+                src="/services/sitios-web_01.webp"
+                alt="Sitios web todo incluido"
+              />
+            </div>
+
+            <div className="technical-service-actions">
+              <button
+                className="service-info-button"
+                type="button"
+                onClick={() => navigateToPage("planes-sitios-web")}
+              >
+                Ver planes
+              </button>
+
+              <button className="service-quote-button" type="button">
+                Cotizar sitio web
+              </button>
+            </div>
           </div>
         </article>
 
         <article className="technical-service-row">
-          <div className="technical-service-image reveal-left">
-            <img
-              src="/services/identidad-visual_01.jpg"
-              alt="Nombre del servicio"
-            />
+          <div className="technical-service-media reveal-left">
+            <div className="technical-service-image">
+              <img
+                src="/services/identidad-visual_01.jpg"
+                alt="Identidad visual"
+              />
+            </div>
+
+            <div className="technical-service-actions">
+              <button className="service-quote-button" type="button">
+                Cotizar diseño
+              </button>
+            </div>
           </div>
 
           <div className="technical-service-text reveal-right">

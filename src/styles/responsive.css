@@ -36,10 +36,13 @@
     width: calc(100% + 36px);
     margin-left: -18px;
     margin-right: -18px;
-    margin-bottom: -24px;
+    margin-bottom: -18px;
+    padding: 52px 24px 26px;
+  }
+
+  .footer-content {
     grid-template-columns: 1fr;
     gap: 34px;
-    padding: 52px 24px;
   }
 
   .page-full-width .footer {
