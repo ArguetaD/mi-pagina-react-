@@ -19,6 +19,19 @@ export const categories = [
   { id: "accesorios", label: "Accesorios" },
 ];
 
+export const computerCategories = [
+  {
+    id: "escritorio",
+    label: "Escritorio",
+    image: "/products/escritorio.jpg",
+  },
+  {
+    id: "laptops",
+    label: "Laptops",
+    image: "/products/laptops.jpg",
+  },
+];
+
 export const products = [
   {
     id: 1,

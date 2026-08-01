@@ -1,3 +1,6 @@
+import ProductCategoryCard from "../components/products/ProductCategoryCard";
+import { computerCategories } from "../data/siteData";
+
 function Productos({
   activeCategory,
   categories,
@@ -46,46 +49,63 @@ function Productos({
         </button>
       </div>
 
-      <p className="products-count">{filteredProducts.length} productos</p>
+      {activeCategory === "computadoras" ? (
+        <div className="product-category-section">
+          <div className="product-category-heading">
+            <p>Computadoras</p>
+            <h2>Elige el tipo de equipo</h2>
+          </div>
 
-      <div className="products-grid">
-        {filteredProducts.map((product) => (
-          <button className="product-card" key={product.id}>
-            <div className="product-card-inner">
-              <div className="product-card-face product-card-front">
-                <div className="product-image">
-                  {product.image ? (
-                    <img src={product.image} alt={product.name} />
-                  ) : (
-                    <span>{product.tag}</span>
-                  )}
-                </div>
+          <div className="product-category-grid">
+            {computerCategories.map((category) => (
+              <ProductCategoryCard category={category} key={category.id} />
+            ))}
+          </div>
+        </div>
+      ) : (
+        <>
+          <p className="products-count">{filteredProducts.length} productos</p>
 
-                <div className="product-body">
-                  <p className="product-tag">{product.tag}</p>
-                  <h3>{product.name}</h3>
+          <div className="products-grid">
+            {filteredProducts.map((product) => (
+              <button className="product-card" type="button" key={product.id}>
+                <div className="product-card-inner">
+                  <div className="product-card-face product-card-front">
+                    <div className="product-image">
+                      {product.image ? (
+                        <img src={product.image} alt={product.name} />
+                      ) : (
+                        <span>{product.tag}</span>
+                      )}
+                    </div>
 
-                  <div className="product-footer">
-                    <strong>{product.price}</strong>
-                    <span>{product.badge}</span>
+                    <div className="product-body">
+                      <p className="product-tag">{product.tag}</p>
+                      <h3>{product.name}</h3>
+
+                      <div className="product-footer">
+                        <strong>{product.price}</strong>
+                        <span>{product.badge}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="product-card-face product-card-back">
+                    <p className="product-tag">Detalles</p>
+                    <h3>{product.name}</h3>
+                    <p>{product.description}</p>
+                    <ul>
+                      <li>Categoría: {product.category}</li>
+                      <li>Estado: {product.badge}</li>
+                      <li>Precio: {product.price}</li>
+                    </ul>
                   </div>
                 </div>
-              </div>
-
-              <div className="product-card-face product-card-back">
-                <p className="product-tag">Detalles</p>
-                <h3>{product.name}</h3>
-                <p>{product.description}</p>
-                <ul>
-                  <li>Categoría: {product.category}</li>
-                  <li>Estado: {product.badge}</li>
-                  <li>Precio: {product.price}</li>
-                </ul>
-              </div>
-            </div>
-          </button>
-        ))}
-      </div>
+              </button>
+            ))}
+          </div>
+        </>
+      )}
     </section>
   );
 }
