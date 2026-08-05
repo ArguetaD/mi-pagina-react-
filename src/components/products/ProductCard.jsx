@@ -1,3 +1,5 @@
+import PriceDisplay from "./PriceDisplay";
+
 function ProductCard({ product, onViewDetails }) {
   return (
     <article className="product-card">
@@ -16,7 +18,7 @@ function ProductCard({ product, onViewDetails }) {
             <h3>{product.name}</h3>
 
             <div className="product-footer">
-              <strong>{product.price}</strong>
+              <strong><PriceDisplay price={product.price} /></strong>
               <span>{product.badge}</span>
             </div>
           </div>
@@ -29,7 +31,7 @@ function ProductCard({ product, onViewDetails }) {
           <ul>
             <li>Categoría: {product.tag}</li>
             <li>Estado: {product.badge}</li>
-            <li>Precio: {product.price}</li>
+            <li>Precio: <PriceDisplay price={product.price} /></li>
           </ul>
 
           <button

@@ -4,7 +4,12 @@ import BackgroundMedia from "./components/BackgroundMedia";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import SearchOverlay from "./components/SearchOverlay";
-import { categories, computerProducts, products } from "./data/products";
+import {
+  categories,
+  computerProducts,
+  phoneProducts,
+  products,
+} from "./data/products";
 import { heroSlides } from "./data/siteData";
 import Contacto from "./pages/Contacto";
 import Home from "./pages/Home";
@@ -21,6 +26,7 @@ function App() {
   const [catalogReturnState, setCatalogReturnState] = useState({
     computerType: null,
     computerCondition: null,
+    phoneCondition: null,
   });
   const [isHeaderFixed, setIsHeaderFixed] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -30,7 +36,7 @@ function App() {
   const isTechnicalServicesPage = page === "servicios-tecnicos";
   const isWebPlansPage = page === "planes-sitios-web";
   const isContactPage = page === "contacto";
-  const allProducts = [...products, ...computerProducts];
+  const allProducts = [...products, ...computerProducts, ...phoneProducts];
   const selectedProduct = allProducts.find(
     (product) => product.id === selectedProductId,
   );
@@ -128,6 +134,7 @@ function App() {
     setCatalogReturnState({
       computerType: null,
       computerCondition: null,
+      phoneCondition: null,
     });
     setIsSearchOpen(false);
     setSearchTerm("");
@@ -138,6 +145,7 @@ function App() {
     setCatalogReturnState({
       computerType: returnState.computerType ?? null,
       computerCondition: returnState.computerCondition ?? null,
+      phoneCondition: returnState.phoneCondition ?? null,
     });
     scrollToPageTop();
   };
@@ -149,13 +157,13 @@ function App() {
 
   const filteredProducts =
     activeCategory === "todos"
-      ? products
+      ? allProducts
       : products.filter((product) => product.category === activeCategory);
 
   const searchResults = searchTerm.trim()
     ? allProducts.filter((product) => {
         const text =
-          `${product.name} ${product.tag} ${product.description}`.toLowerCase();
+          `${product.name} ${product.brand ?? ""} ${product.tag} ${product.description}`.toLowerCase();
 
         return text.includes(searchTerm.toLowerCase());
       })
@@ -178,6 +186,7 @@ function App() {
           setSelectedProductId={setSelectedProductId}
           initialComputerType={catalogReturnState.computerType}
           initialComputerCondition={catalogReturnState.computerCondition}
+          initialPhoneCondition={catalogReturnState.phoneCondition}
           onViewProduct={openProductDetails}
           onOpenSearch={() => setIsSearchOpen(true)}
         />

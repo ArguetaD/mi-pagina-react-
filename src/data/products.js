@@ -55,10 +55,11 @@ const createComputerProducts = (type, condition, typeLabel, conditionLabel) =>
     id: `${type}-${condition}-${index + 1}`,
     type,
     condition,
+    brand: ["HP", "Dell", "Lenovo", "Acer", "ASUS"][index],
     tag: typeLabel,
-    name: `${typeLabel} ${conditionLabel} ${index + 1}`,
+    name: `${["HP", "Dell", "Lenovo", "Acer", "ASUS"][index]} ${typeLabel} ${conditionLabel}`,
     description: `Equipo ${conditionLabel.toLowerCase()} preparado para agregar sus características y especificaciones.`,
-    price: "Consultar",
+    price: `Q${(3850 - index * 175).toLocaleString("en-US")}`,
     badge: conditionLabel,
     image: "",
   }));
@@ -73,6 +74,42 @@ export const computerProducts = [
   ),
   ...createComputerProducts("laptops", "nuevos", "Laptop", "Nueva"),
   ...createComputerProducts("laptops", "seminuevos", "Laptop", "Seminueva"),
+];
+
+export const phoneProductConditions = [
+  {
+    id: "nuevos",
+    label: "Nuevos",
+    image: "",
+    actionLabel: "Ver celulares nuevos",
+  },
+  {
+    id: "seminuevos",
+    label: "Seminuevos",
+    image: "",
+    actionLabel: "Ver celulares seminuevos",
+  },
+];
+
+const phoneBrands = ["Samsung", "Apple", "Xiaomi", "Motorola", "Honor"];
+
+const createPhoneProducts = (condition, conditionLabel) =>
+  phoneBrands.map((brand, index) => ({
+    id: `celular-${condition}-${index + 1}`,
+    category: "celulares",
+    condition,
+    brand,
+    tag: "Celular",
+    name: `${brand} ${conditionLabel} ${index + 1}`,
+    description: `Celular ${conditionLabel.toLowerCase()} preparado para agregar sus características y especificaciones.`,
+    price: `Q${(2999 - index * 150).toLocaleString("en-US")}`,
+    badge: conditionLabel,
+    image: "",
+  }));
+
+export const phoneProducts = [
+  ...createPhoneProducts("nuevos", "Nuevo"),
+  ...createPhoneProducts("seminuevos", "Seminuevo"),
 ];
 
 export const products = [

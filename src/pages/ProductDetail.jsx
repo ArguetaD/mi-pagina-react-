@@ -1,9 +1,12 @@
 import { useState } from "react";
 import ProductGallery from "../components/products/ProductGallery";
 import ProductSpecifications from "../components/products/ProductSpecifications";
+import PhoneProductInformation from "../components/products/PhoneProductInformation";
+import PriceDisplay from "../components/products/PriceDisplay";
 
 function ProductDetail({ product, onBack }) {
   const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
+  const isPhone = product.category === "celulares";
 
   return (
     <article className="product-detail-page">
@@ -28,14 +31,25 @@ function ProductDetail({ product, onBack }) {
       </header>
 
       <div className="product-detail-container">
-        <div className="product-detail-heading">
-          <p>{product.tag}</p>
-          <h1>{product.name}</h1>
-        </div>
+        {!isPhone && (
+          <div className="product-detail-heading">
+            <p>{product.tag}</p>
+            <h1>{product.name}</h1>
+          </div>
+        )}
 
-        <div className="product-detail-overview">
+        {isPhone && (
+          <div className="phone-detail-heading">
+            <h1>{product.name}</h1>
+          </div>
+        )}
+
+        <div className={`product-detail-overview ${isPhone ? "phone-detail-overview" : ""}`}>
           <ProductGallery product={product} />
 
+          {isPhone ? (
+            <PhoneProductInformation product={product} />
+          ) : (
           <div className="product-detail-information">
             <section className="product-description-control">
               <button
@@ -72,7 +86,7 @@ function ProductDetail({ product, onBack }) {
 
               <div className="product-detail-price">
                 <span>Precio</span>
-                <strong>{product.price}</strong>
+                <strong><PriceDisplay price={product.price} /></strong>
               </div>
 
               <div className="product-detail-code">
@@ -85,6 +99,7 @@ function ProductDetail({ product, onBack }) {
               </button>
             </section>
           </div>
+          )}
         </div>
       </div>
     </article>

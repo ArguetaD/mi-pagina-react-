@@ -28,7 +28,7 @@ function SearchOverlay({
               onClick={() => onSelectProduct(product)}
             >
               <strong>{product.name}</strong>
-              <span>{product.tag}</span>
+              <span>{product.brand ?? product.tag}</span>
             </button>
           ))}
         </div>

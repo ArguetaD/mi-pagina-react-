@@ -1,10 +1,13 @@
 import { useState } from "react";
 import ProductCategoryCard from "../components/products/ProductCategoryCard";
 import ProductCard from "../components/products/ProductCard";
+import PhoneCatalog from "../components/products/PhoneCatalog";
 import {
   computerCategories,
   computerProductConditions,
   computerProducts,
+  phoneProductConditions,
+  phoneProducts,
 } from "../data/products";
 
 function Productos({
@@ -15,6 +18,7 @@ function Productos({
   setSelectedProductId,
   initialComputerType,
   initialComputerCondition,
+  initialPhoneCondition,
   onViewProduct,
   onOpenSearch,
 }) {
@@ -158,6 +162,13 @@ function Productos({
             </div>
           )}
         </div>
+      ) : activeCategory === "celulares" ? (
+        <PhoneCatalog
+          conditions={phoneProductConditions}
+          products={phoneProducts}
+          initialCondition={initialPhoneCondition}
+          onViewProduct={onViewProduct}
+        />
       ) : (
         <>
           <p className="products-count">{filteredProducts.length} productos</p>
