@@ -1,11 +1,11 @@
 ﻿.search-overlay {
   position: fixed;
   inset: 0;
-  z-index: 20;
+  z-index: 200;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 110px 24px 0;
+  padding: clamp(150px, 18vh, 180px) 24px 32px;
   background: rgba(3, 10, 20, 0.72);
   backdrop-filter: blur(4px);
   animation: fadeIn 0.25s ease;
@@ -46,6 +46,8 @@
 .search-results {
   grid-column: 1 / -1;
   margin-top: 14px;
+  max-height: calc(100vh - 280px);
+  overflow-y: auto;
   display: grid;
   gap: 10px;
 }

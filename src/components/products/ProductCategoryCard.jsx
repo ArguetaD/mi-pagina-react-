@@ -1,9 +1,10 @@
-function ProductCategoryCard({ category }) {
+function ProductCategoryCard({ category, onSelect }) {
   return (
     <button
       className="product-category-card"
       type="button"
       aria-label={`Ver productos de ${category.label}`}
+      onClick={() => onSelect?.(category.id)}
     >
       <div className="product-category-image">
         {category.image ? (
@@ -21,7 +22,7 @@ function ProductCategoryCard({ category }) {
 
       <div className="product-category-body">
         <h2>{category.label}</h2>
-        <span>Explorar categoría</span>
+        <span>{category.actionLabel ?? "Explorar categoría"}</span>
       </div>
     </button>
   );

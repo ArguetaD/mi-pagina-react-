@@ -1,5 +1,11 @@
+import { useState } from "react";
 import ProductCategoryCard from "../components/products/ProductCategoryCard";
-import { computerCategories } from "../data/siteData";
+import ProductCard from "../components/products/ProductCard";
+import {
+  computerCategories,
+  computerProductConditions,
+  computerProducts,
+} from "../data/products";
 
 function Productos({
   activeCategory,
@@ -7,8 +13,29 @@ function Productos({
   filteredProducts,
   setActiveCategory,
   setSelectedProductId,
+  initialComputerType,
+  initialComputerCondition,
+  onViewProduct,
   onOpenSearch,
 }) {
+  const [selectedComputerType, setSelectedComputerType] = useState(
+    initialComputerType,
+  );
+  const [selectedComputerCondition, setSelectedComputerCondition] =
+    useState(initialComputerCondition);
+
+  const selectedComputerProducts = computerProducts.filter(
+    (product) =>
+      product.type === selectedComputerType &&
+      product.condition === selectedComputerCondition,
+  );
+
+  const computerTypeLabel =
+    selectedComputerType === "escritorio" ? "Escritorio" : "Laptops";
+
+  const computerConditionLabel =
+    selectedComputerCondition === "nuevos" ? "Nuevos" : "Seminuevos";
+
   return (
     <section className="products-page">
       <div className="section-title products-title">
@@ -26,6 +53,8 @@ function Productos({
             onClick={() => {
               setActiveCategory(category.id);
               setSelectedProductId(null);
+              setSelectedComputerType(null);
+              setSelectedComputerCondition(null);
             }}
           >
             {category.label}
@@ -51,16 +80,83 @@ function Productos({
 
       {activeCategory === "computadoras" ? (
         <div className="product-category-section">
+          {(selectedComputerType !== null ||
+            selectedComputerCondition !== null) && (
+            <button
+              className="product-category-back"
+              type="button"
+              onClick={() => {
+                if (selectedComputerCondition !== null) {
+                  setSelectedComputerCondition(null);
+                } else {
+                  setSelectedComputerType(null);
+                }
+              }}
+            >
+              <span aria-hidden="true">←</span>{" "}
+              {selectedComputerCondition !== null
+                ? "Volver a Nuevos / Seminuevos"
+                : "Volver a tipos de equipo"}
+            </button>
+          )}
+
           <div className="product-category-heading">
-            <p>Computadoras</p>
-            <h2>Elige el tipo de equipo</h2>
+            <p>
+              {selectedComputerCondition !== null
+                ? `${computerTypeLabel} · ${computerConditionLabel}`
+                : selectedComputerType === "escritorio"
+                  ? "Computadoras de escritorio"
+                  : selectedComputerType === "laptops"
+                    ? "Laptops"
+                    : "Computadoras"}
+            </p>
+            <h2>
+              {selectedComputerCondition !== null
+                ? `Equipos ${computerConditionLabel.toLowerCase()}`
+                : selectedComputerType !== null
+                ? "Elige el estado del equipo"
+                : "Elige el tipo de equipo"}
+            </h2>
           </div>
 
-          <div className="product-category-grid">
-            {computerCategories.map((category) => (
-              <ProductCategoryCard category={category} key={category.id} />
-            ))}
-          </div>
+          {selectedComputerCondition !== null ? (
+            <>
+              <p className="products-count">
+                {selectedComputerProducts.length} productos
+              </p>
+              <div className="products-grid computer-products-grid">
+                {selectedComputerProducts.map((product) => (
+                  <ProductCard
+                    product={product}
+                    key={product.id}
+                    onViewDetails={() =>
+                      onViewProduct(product, {
+                        computerType: selectedComputerType,
+                        computerCondition: selectedComputerCondition,
+                      })
+                    }
+                  />
+                ))}
+              </div>
+            </>
+          ) : (
+            <div className="product-category-grid">
+              {(selectedComputerType !== null
+                ? computerProductConditions[selectedComputerType]
+                : computerCategories
+              ).map((category) => (
+                <ProductCategoryCard
+                  category={category}
+                  key={category.id}
+                  onSelect={
+                    selectedComputerType === null
+                      ? setSelectedComputerType
+                      : setSelectedComputerCondition
+                  }
+                />
+              ))}
+            </div>
+          )}
         </div>
       ) : (
         <>
@@ -68,40 +164,11 @@ function Productos({
 
           <div className="products-grid">
             {filteredProducts.map((product) => (
-              <button className="product-card" type="button" key={product.id}>
-                <div className="product-card-inner">
-                  <div className="product-card-face product-card-front">
-                    <div className="product-image">
-                      {product.image ? (
-                        <img src={product.image} alt={product.name} />
-                      ) : (
-                        <span>{product.tag}</span>
-                      )}
-                    </div>
-
-                    <div className="product-body">
-                      <p className="product-tag">{product.tag}</p>
-                      <h3>{product.name}</h3>
-
-                      <div className="product-footer">
-                        <strong>{product.price}</strong>
-                        <span>{product.badge}</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="product-card-face product-card-back">
-                    <p className="product-tag">Detalles</p>
-                    <h3>{product.name}</h3>
-                    <p>{product.description}</p>
-                    <ul>
-                      <li>Categoría: {product.category}</li>
-                      <li>Estado: {product.badge}</li>
-                      <li>Precio: {product.price}</li>
-                    </ul>
-                  </div>
-                </div>
-              </button>
+              <ProductCard
+                product={product}
+                key={product.id}
+                onViewDetails={() => onViewProduct(product)}
+              />
             ))}
           </div>
         </>

@@ -4,9 +4,11 @@ import BackgroundMedia from "./components/BackgroundMedia";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import SearchOverlay from "./components/SearchOverlay";
-import { categories, heroSlides, products } from "./data/siteData";
+import { categories, computerProducts, products } from "./data/products";
+import { heroSlides } from "./data/siteData";
 import Contacto from "./pages/Contacto";
 import Home from "./pages/Home";
+import ProductDetail from "./pages/ProductDetail";
 import Productos from "./pages/Productos";
 import PlanesSitiosWeb from "./pages/servicios/PlanesSitiosWeb";
 import ServiciosTecnicos from "./pages/servicios/ServiciosTecnicos";
@@ -16,6 +18,10 @@ function App() {
   const [activeCategory, setActiveCategory] = useState("todos");
   const [activeSlide, setActiveSlide] = useState(0);
   const [selectedProductId, setSelectedProductId] = useState(null);
+  const [catalogReturnState, setCatalogReturnState] = useState({
+    computerType: null,
+    computerCondition: null,
+  });
   const [isHeaderFixed, setIsHeaderFixed] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -24,8 +30,16 @@ function App() {
   const isTechnicalServicesPage = page === "servicios-tecnicos";
   const isWebPlansPage = page === "planes-sitios-web";
   const isContactPage = page === "contacto";
+  const allProducts = [...products, ...computerProducts];
+  const selectedProduct = allProducts.find(
+    (product) => product.id === selectedProductId,
+  );
+  const isProductDetailPage = isProductsPage && Boolean(selectedProduct);
   const isFullWidthPage =
-    isTechnicalServicesPage || isWebPlansPage || isContactPage;
+    isTechnicalServicesPage ||
+    isWebPlansPage ||
+    isContactPage ||
+    isProductDetailPage;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -111,18 +125,35 @@ function App() {
   const selectSearchProduct = (product) => {
     setSelectedProductId(product.id);
     setActiveCategory("todos");
+    setCatalogReturnState({
+      computerType: null,
+      computerCondition: null,
+    });
     setIsSearchOpen(false);
     setSearchTerm("");
   };
 
-  const filteredProducts = selectedProductId
-    ? products.filter((product) => product.id === selectedProductId)
-    : activeCategory === "todos"
+  const openProductDetails = (product, returnState = {}) => {
+    setSelectedProductId(product.id);
+    setCatalogReturnState({
+      computerType: returnState.computerType ?? null,
+      computerCondition: returnState.computerCondition ?? null,
+    });
+    scrollToPageTop();
+  };
+
+  const closeProductDetails = () => {
+    setSelectedProductId(null);
+    scrollToPageTop();
+  };
+
+  const filteredProducts =
+    activeCategory === "todos"
       ? products
       : products.filter((product) => product.category === activeCategory);
 
   const searchResults = searchTerm.trim()
-    ? products.filter((product) => {
+    ? allProducts.filter((product) => {
         const text =
           `${product.name} ${product.tag} ${product.description}`.toLowerCase();
 
@@ -131,6 +162,12 @@ function App() {
     : [];
 
   const renderPage = () => {
+    if (isProductDetailPage) {
+      return (
+        <ProductDetail product={selectedProduct} onBack={closeProductDetails} />
+      );
+    }
+
     if (isProductsPage) {
       return (
         <Productos
@@ -139,6 +176,9 @@ function App() {
           filteredProducts={filteredProducts}
           setActiveCategory={setActiveCategory}
           setSelectedProductId={setSelectedProductId}
+          initialComputerType={catalogReturnState.computerType}
+          initialComputerCondition={catalogReturnState.computerCondition}
+          onViewProduct={openProductDetails}
           onOpenSearch={() => setIsSearchOpen(true)}
         />
       );
@@ -166,14 +206,20 @@ function App() {
   };
 
   return (
-    <main className={`page ${isFullWidthPage ? "page-full-width" : ""}`}>
-      <BackgroundMedia />
+    <main
+      className={`page ${isFullWidthPage ? "page-full-width" : ""} ${
+        isProductDetailPage ? "product-detail-mode" : ""
+      }`}
+    >
+      {!isProductDetailPage && <BackgroundMedia />}
 
-      <Navbar
-        isHeaderFixed={isHeaderFixed}
-        navigateToHomeSection={navigateToHomeSection}
-        navigateToPage={navigateToPage}
-      />
+      {!isProductDetailPage && (
+        <Navbar
+          isHeaderFixed={isHeaderFixed}
+          navigateToHomeSection={navigateToHomeSection}
+          navigateToPage={navigateToPage}
+        />
+      )}
 
       {isSearchOpen && (
         <SearchOverlay
