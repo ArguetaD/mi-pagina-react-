@@ -6,6 +6,22 @@ export const categories = [
   { id: "accesorios", label: "Accesorios" },
 ];
 
+// Cada producto utiliza su propio arreglo de imágenes. La primera imagen
+// también funciona como portada de la tarjeta del catálogo.
+export const productImageGalleries = {
+  // "celular-nuevos-1": [
+  //   "/products/celulares/nuevas/samsung-1.jpg",
+  //   "/products/celulares/nuevas/samsung-2.jpg",
+  // ],
+  // "escritorio-nuevos-1": [
+  //   "/products/computadoras/escritorio/nueva/hp-1.jpg",
+  //   "/products/computadoras/escritorio/nueva/hp-2.jpg",
+  // ],
+};
+
+const getProductImages = (productId) =>
+  productImageGalleries[productId] ?? [];
+
 export const computerCategories = [
   {
     id: "escritorio",
@@ -50,19 +66,27 @@ export const computerProductConditions = {
     },
   ],
 };
+const computerBrands = ["HP", "Dell", "Lenovo", "Acer", "ASUS"];
+
 const createComputerProducts = (type, condition, typeLabel, conditionLabel) =>
-  Array.from({ length: 5 }, (_, index) => ({
-    id: `${type}-${condition}-${index + 1}`,
-    type,
-    condition,
-    brand: ["HP", "Dell", "Lenovo", "Acer", "ASUS"][index],
-    tag: typeLabel,
-    name: `${["HP", "Dell", "Lenovo", "Acer", "ASUS"][index]} ${typeLabel} ${conditionLabel}`,
-    description: `Equipo ${conditionLabel.toLowerCase()} preparado para agregar sus características y especificaciones.`,
-    price: `Q${(3850 - index * 175).toLocaleString("en-US")}`,
-    badge: conditionLabel,
-    image: "",
-  }));
+  computerBrands.map((brand, index) => {
+    const id = `${type}-${condition}-${index + 1}`;
+    const images = getProductImages(id);
+
+    return {
+      id,
+      type,
+      condition,
+      brand,
+      tag: typeLabel,
+      name: `${brand} ${typeLabel} ${conditionLabel}`,
+      description: `Equipo ${conditionLabel.toLowerCase()} preparado para agregar sus características y especificaciones.`,
+      price: `Q${(3850 - index * 175).toLocaleString("en-US")}`,
+      badge: conditionLabel,
+      image: images[0] ?? "",
+      images,
+    };
+  });
 
 export const computerProducts = [
   ...createComputerProducts("escritorio", "nuevos", "Escritorio", "Nuevo"),
@@ -80,13 +104,13 @@ export const phoneProductConditions = [
   {
     id: "nuevos",
     label: "Nuevos",
-    image: "",
+    image: "/products/celulares/clnuevo.jpg",
     actionLabel: "Ver celulares nuevos",
   },
   {
     id: "seminuevos",
     label: "Seminuevos",
-    image: "",
+    image: "/products/celulares/clseminuevo.jpg",
     actionLabel: "Ver celulares seminuevos",
   },
 ];
@@ -94,18 +118,30 @@ export const phoneProductConditions = [
 const phoneBrands = ["Samsung", "Apple", "Xiaomi", "Motorola", "Honor"];
 
 const createPhoneProducts = (condition, conditionLabel) =>
-  phoneBrands.map((brand, index) => ({
-    id: `celular-${condition}-${index + 1}`,
-    category: "celulares",
-    condition,
-    brand,
-    tag: "Celular",
-    name: `${brand} ${conditionLabel} ${index + 1}`,
-    description: `Celular ${conditionLabel.toLowerCase()} preparado para agregar sus características y especificaciones.`,
-    price: `Q${(2999 - index * 150).toLocaleString("en-US")}`,
-    badge: conditionLabel,
-    image: "",
-  }));
+  phoneBrands.map((brand, index) => {
+    const id = `celular-${condition}-${index + 1}`;
+    const images = getProductImages(id);
+
+    return {
+      id,
+      category: "celulares",
+      condition,
+      brand,
+      tag: "Celular",
+      name:
+        brand === "Samsung" && condition === "nuevos"
+          ? "Samsung Galaxy S26 Ultra"
+          : `${brand} ${conditionLabel} ${index + 1}`,
+      description:
+        brand === "Samsung" && condition === "nuevos"
+          ? "Samsung Galaxy S26 Ultra, teléfono inteligente Android desbloqueado, 256GB, violeta cobalto | Pantalla de privacidad, Galaxy AI, cámara AI, carga súper rápida 3.0, batería duradera, 2026"
+          : `Celular ${conditionLabel.toLowerCase()} preparado para agregar sus características y especificaciones.`,
+      price: `Q${(2999 - index * 150).toLocaleString("en-US")}`,
+      badge: conditionLabel,
+      image: images[0] ?? "",
+      images,
+    };
+  });
 
 export const phoneProducts = [
   ...createPhoneProducts("nuevos", "Nuevo"),

@@ -1,5 +1,6 @@
 .product-detail-mode {
   background: #07111f;
+  overflow: visible;
 }
 
 .product-detail-mode::before {
@@ -150,21 +151,20 @@
   text-align: left;
 }
 
-.phone-detail-information h1 {
-  margin: 0 0 6px;
-  color: #fff;
-  font-size: clamp(28px, 3vw, 43px);
-  line-height: 1.12;
+.phone-detail-brand-name {
+  color: #ffffff;
+  font-size: clamp(24px, 2.5vw, 36px);
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
-.phone-detail-brand-link,
-.phone-detail-commercial-info button {
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: #67e8f9;
-  cursor: pointer;
-  font: inherit;
+.phone-detail-description {
+  max-width: 850px;
+  margin: 18px 0 0;
+  color: #ffffff;
+  font-size: clamp(20px, 2vw, 29px);
+  line-height: 1.28;
 }
 
 .phone-detail-rating {
@@ -174,20 +174,7 @@
   color: #fbbf24;
 }
 
-.phone-detail-rating strong,
-.phone-detail-rating span:last-child { color: #fb923c; font-weight: 500; }
-
-.phone-detail-offer {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 7px 10px;
-  border-radius: 5px;
-  background: #ef4444;
-  color: #fff;
-  font-size: 12px;
-  font-weight: 900;
-  text-transform: uppercase;
-}
+.phone-detail-rating strong { color: #cbd5e1; font-weight: 500; }
 
 .phone-detail-divider { margin: 28px 0 18px; border-top: 1px solid rgba(255,255,255,.14); }
 .phone-detail-stock { color: #86efac; font-size: 17px; }
@@ -198,8 +185,21 @@
 .phone-detail-current-price strong { color: #fff; font-size: clamp(31px,3.4vw,45px); line-height: 1; }
 .phone-detail-pricing p { margin: 8px 0 0; color: #94a3b8; }
 .phone-detail-commercial-info { margin-top: 38px; line-height: 1.5; }
-.phone-detail-commercial-info p { margin: 12px 0; }
-.phone-detail-location { padding-top: 18px; color: #67e8f9; }
+.phone-detail-commercial-info h2 { margin: 0 0 18px; color: #fff; font-size: 22px; }
+.phone-detail-commercial-info dl {
+  margin: 0;
+  border-top: 1px solid rgba(255,255,255,.14);
+  border-bottom: 1px solid rgba(255,255,255,.14);
+}
+.phone-characteristic-row {
+  display: grid;
+  grid-template-columns: minmax(170px,.42fr) 1fr;
+  gap: 18px;
+  padding: 8px 0;
+}
+.phone-characteristic-row + .phone-characteristic-row { border-top: 1px solid rgba(255,255,255,.06); }
+.phone-characteristic-row dt { color: #fff; font-weight: 700; }
+.phone-characteristic-row dd { margin: 0; color: #cbd5e1; }
 .phone-detail-contact { width: fit-content; margin: 28px auto 0; display: block; }
 
 .product-gallery,
@@ -660,7 +660,8 @@
 
 @media (max-width: 600px) {
 
-  .phone-detail-purchase { grid-template-columns: 1fr; }
+  .phone-characteristic-row { grid-template-columns: 1fr; gap: 3px; }
+
   .product-detail-header-inner {
     min-height: 190px;
     padding-top: 50px;
