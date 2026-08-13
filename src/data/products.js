@@ -1,5 +1,7 @@
-export { computerProducts } from "./computerProducts";
-export { phoneProducts } from "./phoneProducts";
+import { addProductIdentifiers } from "./productIdentifiers.js";
+
+export { computerProducts } from "./computerProducts.js";
+export { phoneProducts } from "./phoneProducts.js";
 
 export const categories = [
   { id: "todos", label: "Todos" },
@@ -71,26 +73,26 @@ export const phoneProductConditions = [
 ];
 
 export const products = [
-  {
+  addProductIdentifiers({
     id: "cam-0001",
-    slug: "kit-camaras-wifi",
-    sku: "CAM-WIFI-001",
     category: "camaras",
+    brand: "Genérica",
+    model: "Kit cámaras WiFi",
     tag: "Seguridad",
     name: "Kit de cámaras WiFi",
     description: "Sistema de monitoreo para hogar o negocio.",
     price: "Q2,400",
     badge: "Instalación",
-  },
-  {
+  }),
+  addProductIdentifiers({
     id: "acc-0001",
-    slug: "mouse-inalambrico",
-    sku: "ACC-MOU-001",
     category: "accesorios",
+    brand: "Genérica",
+    model: "Mouse inalámbrico",
     tag: "Accesorio",
     name: "Mouse inalámbrico",
     description: "Mouse cómodo, portátil y compatible con laptop o PC.",
     price: "Q95",
     badge: "Popular",
-  },
+  }),
 ];
