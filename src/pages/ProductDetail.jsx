@@ -91,7 +91,7 @@ function ProductDetail({ product, onBack }) {
 
               <div className="product-detail-code">
                 <span>Código del producto</span>
-                <strong>{product.id}</strong>
+                <strong>{product.sku ?? product.id}</strong>
               </div>
 
               <button className="product-detail-contact" type="button">

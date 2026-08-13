@@ -8,7 +8,11 @@ function ProductCategoryCard({ category, onSelect }) {
     >
       <div className="product-category-image">
         {category.image ? (
-          <img src={category.image} alt={category.label} />
+          <img
+            className={category.imageFit ? `image-${category.imageFit}` : ""}
+            src={category.image}
+            alt={category.label}
+          />
         ) : (
           <div className="product-category-placeholder" aria-hidden="true">
             <svg viewBox="0 0 24 24">

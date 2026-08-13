@@ -142,6 +142,7 @@
 }
 
 .product-category-image {
+  position: relative;
   height: 290px;
   margin: 16px 16px 0;
   overflow: hidden;
@@ -158,6 +159,24 @@
   height: 100%;
   display: block;
   object-fit: contain;
+}
+
+.product-category-image img.image-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: auto;
+  object-fit: initial;
+  transform: translateY(-15%);
+}
+
+.product-category-image img.image-cover-seminuevo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: auto;
+  object-fit: initial;
+  transform: translateY(-5%);
 }
 
 .product-category-placeholder {
